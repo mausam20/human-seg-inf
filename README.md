@@ -1,7 +1,7 @@
-# Image Segmentation Inference Script
+# Image Segmentation Inference Finetuned on Human
 
 ## Overview
-This script performs image segmentation using a deep learning model. It takes as input a directory containing images or a text file listing image paths, runs inference using a pre-trained model, and outputs the segmented images along with corresponding JSON files containing the segmentation details.
+This code performs image segmentation using a Facebook pretrianed sam2 model fintunned on human body. It takes as input a directory containing images or a text file listing image paths, runs inference using a pre-trained model, and outputs the segmented images along with corresponding JSON files containing the segmentation details.
 
 ## Features
 - Loads a model checkpoint and performs inference on input images
@@ -23,13 +23,13 @@ This script performs image segmentation using a deep learning model. It takes as
 ## Installation
 Install the required dependencies using:
 ```bash
-pip install torch torchvision opencv-python numpy tqdm matplotlib
+pip install -r requirements.txt
 ```
 
 ## Usage
 Run the script using:
 ```bash
-python script.py <checkpoint_path> --input <image_directory> --output_root <output_directory>
+python  .\\demo\\vis_seg.py  <checkpoint_path> --input <image_directory> --output_root <output_directory>
 ```
 
 ### Arguments
@@ -55,7 +55,7 @@ For each processed image, the script generates:
 
 ## Example
 ```bash
-python script.py model.pth --input ./images --output_root ./output --batch_size 8 --opacity 0.7 --num_workers 8 --save_format jpg
+python .\\demo\\vis_seg.py .\\checkpoints\sapiens_1b_goliath_best_goliath_mIoU_7994_epoch_151_torchscript.pt2 --input .\\input_images\ \--output_root .\\output_images\\
 ```
 This will process images in `./images`, save outputs in `./output`, use a batch size of 8, employ 8 worker processes for data loading, and save results in JPG format.
 
